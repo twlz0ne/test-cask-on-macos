@@ -1,6 +1,6 @@
 (source melpa)
 
-(package "batman-mode" "0.0.1" "Catches criminals.")
+(package "test-cask" "0.0.1" "Tesk Cask.")
 
 (development
  (depends-on "ert-runner"))

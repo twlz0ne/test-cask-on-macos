@@ -1,38 +1,4 @@
-#+TITLE: Batman Mode
+#+TITLE: Test Cask
 
-[[https://melpa.org/#/batman-mode][file:https://melpa.org/packages/batman-mode-badge.svg]]
-[[https://github.com/batman/batman-mode/actions?query=workflow%3ACI][file:https://github.com/batman/batman-mode/workflows/CI/badge.svg]]
+[[https://github.com/twlz0ne/test-cask/actions?query=workflow%3ACI][https://github.com/twlz0ne/test-cask/workflows/CI/badge.svg]]
 
-Catches criminals.
-
-* Installing
-
-Simply grab it from [[https://melpa.org/][MELPA]].
-
-** [[https://github.com/jwiegley/use-package][use-package]]
-
-#+begin_src emacs-lisp
-(use-package batman-mode
-  :ensure t)
-#+end_src
-
-** [[https://github.com/raxod502/straight.el][straight.el]]
-
-#+begin_src emacs-lisp
-(straight-use-package 'batman-mode)
-#+end_src
-
-** package.el
-
-[[https://melpa.org/#/getting-started][Ensure you have MELPA available.]]
-
-=M-x package-install RET batman-mode RET=.
-
-** Manual
-
-Just fetch [[file:batman-mode.el][batman-mode.el]], save it somewhere and load it into
-Emacs.
-
-* Use
-
-Just =M-x batman-mode RET=.
