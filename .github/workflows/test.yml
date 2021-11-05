@@ -11,7 +11,6 @@ on:
 jobs:
   test:
     runs-on: macos-latest
-    continue-on-error: ${{matrix.allow_failures}}
 
     strategy:
       fail-fast: false
@@ -25,23 +24,31 @@ jobs:
           - 26.3
           - 27.1
 
-        allow_failures: [false]
-
         include:
-          - emacs_version: snapshot
-            allow_failures: true
+          - emacs_version: 25.1
+            dmg: Emacs-25.1-1-universal.dmg
+          - emacs_version: 25.2
+            dmg: Emacs-25.2-universal.dmg
+          - emacs_version: 25.3
+            dmg: Emacs-25.3-universal.dmg
+          - emacs_version: 26.1
+            dmg: Emacs-26.1-2-universal.dmg
+          - emacs_version: 26.2
+            dmg: Emacs-26.2-universal.dmg
+          - emacs_version: 26.3
+            dmg: Emacs-26.3-universal.dmg
+          - emacs_version: 27.1
+            dmg: Emacs-27.1-1-universal.dmg
+
+    env:
+      EMACS: /Applications/Emacs.app/Contents/MacOS/Emacs
 
     steps:
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.6
-        architecture: x64
-
     - name: Set up Emacs
-      uses: purcell/setup-emacs@master
-      with:
-        version: ${{matrix.emacs_version}}
+      run: |
+        curl -o ${{matrix.dmg}} https://emacsformacosx.com/download/emacs-builds/${{matrix.dmg}}
+        hdiutil attach -mountpoint /Volumes/${{matrix.dmg}} ${{matrix.dmg}} -nobrowse
+        cp -R /Volumes/${{matrix.dmg}}/Emacs.app /Applications/
 
     - name: Set up Cask
       uses: conao3/setup-cask@master
